@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="b" width="255" height="255" style="border: 1px solid black">
+
+    </canvas>
+    <script>
+        let cavas = document.getElementById("b");
+        // let c = document.createElement("canvas");
+        let cot = cavas.getContext('2d');
+        
+        let img = new Image(50, 50);
+        img.src = '/src/game/assets/arkanoid.png'
+        img.onload = () => {
+            cot.drawImage(img, 0, 0)
+        };
+        cot.translate(0, 0);
+    </script>
+</body>
+
+</html>

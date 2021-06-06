@@ -1,11 +1,28 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: grey;
 }
 canvas.standard {
-    position: relative;
-    width: 48px;
-    height: 8px;
-    border: 1px dashed white;
+    position: absolute;
+    z-index: 1;
+    width: 56px;
+    height: 28px;
+    /* border: 1px dashed white; */
+    margin-left: 1px;
+    margin-top:1px;
+}
+.menu {
+    position: absolute;
+    z-index: 50;
+    width: 300px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid greenyellow;
+}
+.blona {
+    position: absolute;
+    z-index: 25;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }

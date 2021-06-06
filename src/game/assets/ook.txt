@@ -1,0 +1,5 @@
+top: 216, left: 5
+wid 47, left 14
+
+8 - długość
+4 - wysokść

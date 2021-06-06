@@ -46,20 +46,7 @@ export default class HandleMouse {
             this.cs = []
             window.dispatchEvent(this.updateBoard)
             this.moved = false;
-            // } else {
-            // console.log("evm", ev)
-            // this.list.forEach(c => {
-            // let r1 = c.getBoundingClientRect();
-            // let test =
-            // r1.right >= ev.pageX && r1.left < ev.pageX &&
-            // r1.bottom >= ev.pageX && r1.top < ev.pageX;
-            // if (test)
-            // if (EDATA.ControlLeft)
-            // EDATA.targetList.push(c)
-            // else EDATA.targetList = [c]
-            // });
-            // window.dispatchEvent(this.updateBoard)
-            // }
+
         }
     }
     createB = () => {
@@ -79,8 +66,8 @@ export default class HandleMouse {
     }
     handleMouseMove = (ev) => {
 
-
         if (this.clicked) {
+
             // console.log(this.cs)
             // console.log(this.b.getBoundingClientRect())
             if (ev.pageX - this.startx >= 0) {
@@ -102,17 +89,17 @@ export default class HandleMouse {
                 let r1 = el.getBoundingClientRect();
                 let r2 = this.b.getBoundingClientRect();
                 let test =
-                    (r1.bottom >= r2.bottom && r1.bottom - 30 <= r2.bottom &&
-                        r1.left <= r2.left && r1.left + 58 >= r2.left) ||
+                    (r1.bottom >= r2.bottom && r1.bottom - r1.height <= r2.bottom &&
+                        r1.left <= r2.left && r1.left + r1.width >= r2.left) ||
 
-                    (r1.top <= r2.top && r1.top + 30 >= r2.top &&
-                        r1.right >= r2.right && r1.right - 58 <= r2.right) ||
+                    (r1.top <= r2.top && r1.top + r1.height >= r2.top &&
+                        r1.right >= r2.right && r1.right - r1.width <= r2.right) ||
 
-                    (r1.bottom >= r2.bottom && r1.bottom - 30 <= r2.bottom &&
-                        r1.right >= r2.right && r1.right - 58 <= r2.right) ||
+                    (r1.bottom >= r2.bottom && r1.bottom - r1.height <= r2.bottom &&
+                        r1.right >= r2.right && r1.right - r1.width <= r2.right) ||
 
-                    (r1.top <= r2.top && r1.top + 30 >= r2.top &&
-                        r1.left <= r2.left && r1.left + 58 >= r2.left)
+                    (r1.top <= r2.top && r1.top + r1.height >= r2.top &&
+                        r1.left <= r2.left && r1.left + r1.width >= r2.left)
                     //punkty
 
                     || (r2.left >= r1.left && r2.left <= r1.right && r2.top < r1.top && r2.bottom > r1.bottom)
@@ -126,9 +113,6 @@ export default class HandleMouse {
                     || (r1.left >= r2.left && r1.top >= r2.top && r1.bottom <= r2.bottom && r1.right <= r2.right ||
                         r1.left <= r2.left && r1.top <= r2.top && r1.bottom >= r2.bottom && r1.right >= r2.right)
                 //środek
-                // 
-                //czy lewa ściana jest wewnątrz
-
 
                 if (test && this.cs.indexOf(el) == -1) {
                     // console.log(el)

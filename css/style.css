@@ -8,7 +8,7 @@ canvas.standard {
     z-index: 1;
     width: 56px;
     height: 28px;
-    /* border: 1px dashed white; */
+    border: 1px dashed white;
     margin-left: 1px;
     margin-top:1px;
 }

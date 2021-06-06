@@ -74,6 +74,7 @@ export default class CanvasBlock {
         canvas.style.top = (row * 30) + "px";
         canvas.style.left = (colum * 58) + "px";
         canvas.draggable = false;
+
         canvas.onmouseenter = (ev) => {
             ev.target.style.borderColor = "red";
             if (EDATA.targetList.indexOf(ev.target) != -1) {
@@ -125,24 +126,7 @@ export default class CanvasBlock {
 
 
     }
-    handleBoard = (target) => {
-        // console.log(target, this.canvaslist.indexOf(target));
 
-        // if (this.handlemouse.cs.length < 0)
-        //     if (EDATA.ControlLeft) {
-        //         if (EDATA.targetList.indexOf(target) == -1) EDATA.targetList = [...EDATA.targetList, target]
-        //         else EDATA.targetList.splice(EDATA.targetList.indexOf(target), 1)
-        //     } else {
-        //         if (EDATA.targetList.indexOf(target) == -1)
-        //             EDATA.targetList = [target];
-        //         else
-        //             EDATA.targetList = [];
-        //     }
-        // console.log(EDATA.targetList)
-
-        // console.log(EDATA.targetList)
-        // target.style. = ""
-    }
     update = () => {
         if (this.menu) {
             this.menu.nodeMenu.style.display = "none";

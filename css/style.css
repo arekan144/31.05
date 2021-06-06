@@ -16,7 +16,7 @@ canvas.standard {
     position: absolute;
     z-index: 50;
     width: 300px;
-    height: 100px;
+    
     background-color: rgb(255, 255, 255);
     border: 1px solid greenyellow;
 }
@@ -25,4 +25,14 @@ canvas.standard {
     z-index: 25;
     background-color: rgba(255, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.opt{
+    font-family: 'Courier New', Courier, monospace;
+    width: 280px;
+    height: 20px;
+    padding: 10px;
+}
+.opt:hover {
+    background-color: rgba(128, 128, 128, 0.171);
+    cursor:pointer;
 }

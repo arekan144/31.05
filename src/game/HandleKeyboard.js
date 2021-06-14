@@ -1,13 +1,11 @@
 "use strict";
+
 import EDATA from "./edata.js"
 export default class Keyboard {
     constructor(evn) {
         window.onkeydown = this.handleKeyDown
         window.onkeyup = this.handleKeyUp
         this.evn = evn
-        // window.addEventListener('clearBoard', function () {
-        //     console.log("xd")
-        // }, false)
     }
     handleKeyDown = (ev) => {
         // console.log(ev.code)

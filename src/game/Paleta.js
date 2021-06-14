@@ -8,9 +8,7 @@ export default class Palet {
         // this.initBricks();
         // this.init();
     }
-    // init = async () => {
-    //     console.log("ok")
-    // }
+
     loadMainImage = () => {
         return new Promise((resolve, reject) => {
             this.mainImage = new Image();

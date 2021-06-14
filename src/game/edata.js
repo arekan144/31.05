@@ -1,3 +1,5 @@
+"use strict";
+
 export default {
     //keys
     ControlLeft: false,
@@ -9,4 +11,6 @@ export default {
 
     //data
     targetList: [],
+    previus: [], //{ canvs: [], data: [] }
+    next: []
 }

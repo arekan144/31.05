@@ -20,25 +20,52 @@ export default class CanvasBlock {
             this.menu = new Menu()
         }
         if (evn) {
+            this.menu.evn = evn;
             window.addEventListener('clearBoard', () => {
                 EDATA.targetList.forEach(target => {
                     target.getContext('2d').clearRect(0, 0, 60 * 5, 32 * 5)
                 })
+                this.handlemouse.b.remove();
                 EDATA.targetList = [];
-                // console.log("update!")
                 this.update();
             }, false)
             window.addEventListener('update', () => {
                 this.update();
             })
+            window.addEventListener('saveBoard', () => {
+                // console.log(this.canvaslist)
+                let doZapisania = new Array();
+                this.canvaslist.forEach(canv => {
+                    doZapisania.push(canv.toDataURL("png"))
+                })
+                // let data = new Blob(doZapisania, ArrayBuffer, 'text/plane')
+                // console.log(data.text())
+                let a = document.createElement("a")
+                a.href = "data:application/octet-stream," + encodeURIComponent(JSON.stringify(doZapisania, null, 0))
+                // console.log(a)
+                a.download = "file" + Math.floor(Math.random() * 100) + ".ald"
+                a.click();
+            })
+            window.addEventListener('loadBoard', (e) => {
+                // console.log(e.detail);
+                this.canvaslist.forEach((canv, index) => {
+                    let img = document.createElement("img");
+                    img.src = e.detail[index]
 
+                    canv.getContext('2d').clearRect(0, 0, canv.width, canv.height)
+                    setTimeout(() => {
+                        canv.getContext('2d').drawImage(img, 0, 0)
+                    }, 10);
+                })
+
+
+            })
             this.handlemouse = new HandleMouse(this.mainNode)
 
             this.mainNode.onmousedown = (ev) => {
                 // console.log(this.handlemouse.targetList)
                 ev.preventDefault();
                 this.handlemouse.moved = false;
-
                 if (ev.button == 0) {
                     this.handlemouse.clicked = true;
                     // console.log(ev)
@@ -50,6 +77,8 @@ export default class CanvasBlock {
                     this.handlemouse.createB();
                 }
             }
+            ////
+
         }
 
         this.init();
@@ -107,7 +136,8 @@ export default class CanvasBlock {
     }
     handleMenu = (ev) => {
         ev.preventDefault();
-        console.log(ev)
+        // console.log(EDATA.targetList)
+        // console.log(ev)
         if (this.menu) {
             // console.log("MNNIU")
             this.menu.nodeMenu.style.left = ev.clientX + "px"
@@ -117,14 +147,21 @@ export default class CanvasBlock {
     }
     handleBlocks = (target) => {
         // this.handlemouse.
-        EDATA.targetList.forEach(trgt => {
-            // console.log(target)
-            trgt.getContext('2d').drawImage(target, 0, 0)
-        })
-        EDATA.targetList = [];
-        this.plansza.update();
+        if (EDATA.targetList.length > 0) {
+            let doZpisu = new Array();
+            EDATA.targetList.forEach(trgt => {
+                // console.log(target)
+                // doZpisu.push()
+                doZpisu.push(trgt.toDataURL("png"))
+                trgt.getContext('2d').drawImage(target, 0, 0)
 
-
+            })
+            EDATA.previus = [{ canvs: [...EDATA.targetList], data: [...doZpisu] }, ...EDATA.previus]
+            EDATA.next = [];
+            console.log(EDATA.previus)
+            EDATA.targetList = [];
+            this.plansza.update();
+        }
     }
 
     update = () => {

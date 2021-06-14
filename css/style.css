@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: grey;
+    /* overflow: hidden; */
 }
 canvas.standard {
     position: absolute;
@@ -35,4 +36,11 @@ canvas.standard {
 .opt:hover {
     background-color: rgba(128, 128, 128, 0.171);
     cursor:pointer;
+}
+#root.gra {
+    display: flex;
+    justify-content: center;
+}
+.playarea{
+    border: 1px solid black;
 }

@@ -58,7 +58,6 @@ export default class CanvasBlock {
                     }, 10);
                 })
 
-
             })
             this.handlemouse = new HandleMouse(this.mainNode)
 

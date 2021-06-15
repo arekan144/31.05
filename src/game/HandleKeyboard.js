@@ -9,7 +9,7 @@ export default class Keyboard {
     }
     handleKeyDown = (ev) => {
         // console.log(ev.code)
-
+        ev.preventDefault();
         switch (ev.key) {
             case "Control": case "Meta":
                 EDATA.ControlLeft = true;
@@ -27,7 +27,7 @@ export default class Keyboard {
 
     }
     handleKeyUp = (ev) => {
-
+        ev.preventDefault();
         // console.log(ev)
         switch (ev.key) {
             case "Control": case "Meta":

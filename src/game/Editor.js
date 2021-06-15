@@ -25,7 +25,7 @@ export default class Editor {
         this.right.style.cssText = this.left.style.cssText;
 
         // this.bloczki.canvaslist[0].getContext('2d')
-        this.plansza = new CanvasBlock(this.right, 14, 30, true, eventThatClears)
+        this.plansza = new CanvasBlock(this.right, 14, 24, true, eventThatClears)
         this.bloczki = new CanvasBlock(this.left, 5, 3, false, false, this.plansza);
         //14 30
         this.bloczki.canvaslist.forEach((can, index) => {
@@ -34,10 +34,10 @@ export default class Editor {
                 can.getContext('2d').scale(5, 5)
                 can.getContext('2d').drawImage(
                     this.palet.mainImage,
-                    this.palet.BRICKS[index].left,
-                    this.palet.BRICKS[index].top,
-                    this.palet.BRICKP.width,
-                    this.palet.BRICKP.height,
+                    this.palet.BRICKS[index].left * this.palet.mnoznik,
+                    this.palet.BRICKS[index].top * this.palet.mnoznik,
+                    this.palet.BRICKP.width * this.palet.mnoznik,
+                    this.palet.BRICKP.height * this.palet.mnoznik,
                     0,
                     0,
                     58,
@@ -45,6 +45,7 @@ export default class Editor {
                 )
             }
         })
+        
         this.rootNode.append(this.left, this.right)
 
 

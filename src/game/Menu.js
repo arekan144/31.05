@@ -58,10 +58,8 @@ export default class Menu {
             this.loadFun();
         }
 
-
-
         //keypress
-        window.onkeypress = (e) => {
+        window.addEventListener('keyup', (e) => {
             if (EDATA.ControlLeft && e.code === 'KeyZ') {
                 // console.log(EDATA.ControlLeft)
                 this.undoFun();
@@ -71,16 +69,16 @@ export default class Menu {
                 this.reduFun();
             }
             if (EDATA.ControlLeft && e.code === 'KeyS') {
-                e.preventDefault();
-                e.stopPropagation();
+                // e.preventDefault();
+                // e.stopPropagation();
                 this.saveFun();
             }
             if (EDATA.ControlLeft && e.code === 'KeyL') {
-                e.preventDefault();
-                e.stopPropagation();
+                // e.preventDefault();
+                // e.stopPropagation();
                 this.loadFun();
             }
-        }
+        })
     }
     undoFun() {
         if (EDATA.previus.length > 0) {
@@ -122,6 +120,7 @@ export default class Menu {
     }
     saveFun() {
         const SaveBoard = new Event("saveBoard");
+        EDATA.ControlLeft = false;
         window.dispatchEvent(SaveBoard);
     }
     loadFun() {
@@ -132,6 +131,7 @@ export default class Menu {
             filereader.readAsText(file);
             filereader.onload = function () {
                 let data = JSON.parse(filereader.result);
+                EDATA.ControlLeft = false;
                 const LoadBoard = new CustomEvent("loadBoard", { "detail": data });
                 // filereader.result
                 window.dispatchEvent(LoadBoard)

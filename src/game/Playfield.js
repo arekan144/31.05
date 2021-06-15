@@ -13,6 +13,12 @@ export default class Playfield {
     init = async () => {
         this.palet = new Palet();
         await this.palet.loadMainImage();
+        this.canvasBlock.clearBackground(this.palet);
+        this.canvasBlock.putOnPage();
+        await this.canvasBlock.data;
+        this.canvasBlock.init();
+        
+        window.requestAnimationFrame((t) => this.canvasBlock.update(t))
     }
 
 }

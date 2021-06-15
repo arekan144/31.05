@@ -175,7 +175,7 @@ export default class Playarea {
                 )
             }
         })
-        this.context.rect(60 + this.gracz.x, 152 + this.gracz.y, this.gracz.pos.width, this.gracz.pos.height)
+        // this.context.rect(60 + this.gracz.x, 152 + this.gracz.y, this.gracz.pos.width, this.gracz.pos.height)
 
 
         this.context.fill();
